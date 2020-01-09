@@ -42,21 +42,20 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapCli
 
     override fun onMapReady(googleMap: GoogleMap?) {
         mMap = googleMap!!
-
-        circleMapsGesture ?.setMap(mMap)
+        mMap?.mapType=GoogleMap.MAP_TYPE_NORMAL
+        circleMapsGesture?.setMap(googleMap)
         circleMapsGesture?.setCallbackCircle(this)
         //circleMapsGesture?.visibility=View.GONE
 
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         mMap.setOnMapClickListener(this)
+        circleMapsGesture?.createCircle(sydney)
 
     }
 
     override fun onMapClick(latLng: LatLng) {
-        Log.e(",","siii")
         circleMapsGesture?.createCircle(latLng)
         //circleMapsGesture?.visibility=View.VISIBLE
     }

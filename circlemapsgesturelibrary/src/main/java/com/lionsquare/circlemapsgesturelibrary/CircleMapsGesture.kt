@@ -51,6 +51,7 @@ class CircleMapsGesture : View {
         invalidate()
     }
 
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
         mScaleDetector.onTouchEvent(event)
         when (event.actionMasked) {
